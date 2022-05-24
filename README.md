@@ -6,5 +6,5 @@ To use this, you will need to DOWNLOAD the contents of the GoogleSheet into a Mi
 Then you will need to input the path of your downloaded file into the program for it to run.
 Once you are done, you will have to upload the contents of the Microsopft Spreadsheet back to the Google Drive.
 
-This program is listening for keyboard inputs the entire time it is running, so if you must exit whenever you are not labeling data. 
+This program is listening for keyboard inputs the entire time it is running, so you must exit whenever you are not labeling data. 
 Although, once you do running, you should not need to click anything. Simply pressing the arrow keys will input your answer into the dataset, change to the next picture, and save your spreadsheet for you when you exit. 
