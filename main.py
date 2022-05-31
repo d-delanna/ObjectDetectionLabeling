@@ -70,6 +70,6 @@ def main(file_name):
 
 
 if __name__ == '__main__':
-    main("YOUR FILEPATH HERE")
-# Make sure when you put in your filepath, the files and folders are divided by double slashes: \\, not \
+    main('Your/File/Path/Here')
+# Make sure when you put in your filepath, the files and folders are divided by double down slashes or single up slashes: \\, or /, not \
 # ex: C:\\Users\\Benjamin Collins\\Repos\\ObjectDetectionLabeling\\output_wiki_280001_to_300000_2022-01-16_21__20__33.xlsx
