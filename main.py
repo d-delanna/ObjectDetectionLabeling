@@ -1,4 +1,4 @@
-import webbrowser
+import webbrowser, pyautogui
 import string
 from openpyxl import load_workbook
 from pynput.keyboard import Key, Listener
@@ -10,7 +10,7 @@ class ObjectDetection:
               "\'Right\' for Unsure, and \'Left\' to undo."
               "\nTo exit, press \'Esc\'.\n")
         self.file_name, self.idx = file_name, start_idx
-        self.workbook = load_workbook(self.file_name)
+        self.workbook = load_workbook(filename = file_name)
         self.sheet = self.workbook.active
         self.col_idx = self.__get_columns()
         self.exiting = False
@@ -28,13 +28,16 @@ class ObjectDetection:
         if key == Key.left:
             self.idx -= 1
             self.sheet.cell(row=self.idx, column=3).value = None
+            pyautogui.hotkey('ctrl', 'w')
             print("Back/Undo")
         elif key in [Key.up, Key.down, Key.right]:
             input_dict = {Key.up: ('y', 'Yes'), Key.down: ('n', 'No'), Key.right: ('u', 'Pass/Unsure')}
             self.sheet.cell(row=self.idx, column=3).value = input_dict[key][0]
             self.idx += 1
+            pyautogui.hotkey('ctrl', 'w')
             print(input_dict[key][1])
         elif key == Key.esc:
+            pyautogui.hotkey('ctrl', 'w')
             self.exiting = True
             print("\nExiting...")
         else:
@@ -68,3 +71,5 @@ def main(file_name):
 
 if __name__ == '__main__':
     main('Your/File/Path/Here')
+# Make sure when you put in your filepath, the files and folders are divided by double down slashes or single up slashes: \\, or /, not \
+# ex: C:\\Users\\Benjamin Collins\\Repos\\ObjectDetectionLabeling\\output_wiki_280001_to_300000_2022-01-16_21__20__33.xlsx
