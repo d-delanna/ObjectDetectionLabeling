@@ -11,3 +11,6 @@ You may also want to convert the file back to a GooleSheet once uploaded by clic
 This program is listening for keyboard inputs the entire time it is running, so you must exit whenever you are not labeling data. 
 It is easiest if you open a new window before starting.
 Once it is running, you should not need to click anything. Simply pressing the arrow keys will input your answer into the dataset, change to the next picture, and save your spreadsheet for you when you exit. 
+
+# NOTE
+If the program starts to compain about the file it is likely because the file is corrupted and a new copy should be used
