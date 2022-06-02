@@ -9,6 +9,3 @@ Once all the data is labeled, use File -> Save as Google Sheets and upload the c
 This program is listening for keyboard inputs the entire time it is running, so you must exit whenever you are not labeling data. 
 It is easiest if you open a new window before starting.
 Once it is running, you should not need to click anything. Simply pressing the arrow keys will input your answer into the dataset, change to the next picture, and save your spreadsheet for you when you exit. 
-
-# Note
-In the event of a KeyError: "There is no item named '[Content_Types].xml' in the archive", the current file is corrupted and a new copy should be used.
