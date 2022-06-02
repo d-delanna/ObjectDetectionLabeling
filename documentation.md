@@ -1,4 +1,4 @@
-DataLabeling(file_name, start_idx=2, machine='Windows')
+**DataLabeling(file_name, start_idx=2, machine='Windows')**
 
 *file_name* : Path directory to spreadsheet
 
