@@ -4,16 +4,18 @@ from openpyxl import load_workbook
 from pynput.keyboard import Key, Listener
 
 
-class ObjectDetection:
-    def __init__(self, file_name, start_idx=2):
+class DataLabeling:
+    def __init__(self, file_name, start_idx=2, machine='Windows'):
         print("Press \'Up\' for Yes, \'Down\' for No, "
               "\'Right\' for Unsure, and \'Left\' to undo."
               "\nTo exit, press \'Esc\'.\n")
         self.file_name, self.idx = file_name, start_idx
-        self.workbook = load_workbook(filename = file_name)
+        self.workbook = load_workbook(filename=file_name)
         self.sheet = self.workbook.active
-        self.col_idx = self.__get_columns()
+        self.col_idx = self.__get_columns()  # col idx of object_type, user_response, and url
         self.exiting = False
+        key_dict = {'Windows': 'ctrl', 'Mac': 'command'}
+        self.hot_key = key_dict[machine]
         self.__label_data()
 
     def __get_columns(self):
@@ -28,20 +30,18 @@ class ObjectDetection:
         if key == Key.left:
             self.idx -= 1
             self.sheet.cell(row=self.idx, column=3).value = None
-            pyautogui.hotkey('ctrl', 'w')
             print("Back/Undo")
         elif key in [Key.up, Key.down, Key.right]:
             input_dict = {Key.up: ('y', 'Yes'), Key.down: ('n', 'No'), Key.right: ('u', 'Pass/Unsure')}
             self.sheet.cell(row=self.idx, column=3).value = input_dict[key][0]
             self.idx += 1
-            pyautogui.hotkey('ctrl', 'w')
             print(input_dict[key][1])
         elif key == Key.esc:
-            pyautogui.hotkey('ctrl', 'w')
             self.exiting = True
             print("\nExiting...")
         else:
             print("Invalid Input")
+        pyautogui.hotkey(self.hot_key, 'w')
         return False
 
     def __write_input(self):
@@ -66,10 +66,8 @@ class ObjectDetection:
 
 
 def main(file_name):
-    ObjectDetection(file_name)
+    DataLabeling(file_name)
 
 
 if __name__ == '__main__':
-    main('Your/File/Path/Here')
-# Make sure when you put in your filepath, the files and folders are divided by double down slashes or single up slashes: \\, or /, not \
-# ex: C:\\Users\\Benjamin Collins\\Repos\\ObjectDetectionLabeling\\output_wiki_280001_to_300000_2022-01-16_21__20__33.xlsx
+    main(r'file\path\here')
